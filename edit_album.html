@@ -1,0 +1,162 @@
+<head>
+  <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="preload" as="style" href="../static/assets/mobirise/css/mbr-additional.css">
+  <link rel="stylesheet" href="../static/assets/mobirise/css/mbr-additional.css" type="text/css">
+  <link rel="stylesheet" href="../static/assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/bootstrap/css/bootstrap-grid.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/bootstrap/css/bootstrap-reboot.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/tether/tether.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static',filename='assets/theme/css/style.css') }}">
+
+</head>
+
+<style type="text/css">
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.danger {
+  color: red;
+}
+
+.danger:hover {
+  background: #f44336;
+  color: white;
+}
+
+.btn {
+  border: none;
+  background-color: inherit;
+  padding: 0px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline;
+}
+
+.warning {
+  color: orange;
+}
+
+.warning:hover {
+  background: #ff9800;
+  color: white;
+}
+
+.success {
+  color: green;
+}
+
+.success:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.info {
+  color: dodgerblue;
+}
+
+.info:hover {
+  background: #2196F3;
+  color: white;
+}
+
+	
+
+</style>
+<a href="/artist/{{home}}"><img src="{{ url_for('static',filename='home.png') }}" width="60" height="60" style="position: fixed; bottom: 20px; right: 30px; z-index: 1000"></a>
+<center>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+	<br><br><br><br><h1> Album Dashboard</h1><br><br><br>
+<form method="POST">
+	<p><label for="name"> <b>{{album['info'][0]}}&nbsp; &nbsp; </b></label> 
+		<input name="album_album" type="text" placeholder="{{album['info'][1]}}" /> 
+		<label for="name"><b> &nbsp;&nbsp;Genre&nbsp; &nbsp; </b></label> 
+		<input name="genre_album" type="text" placeholder="{{album['info'][2]}}" /> 
+		<input name="dltalb" type="submit" value="Delete" class="btn danger"></p>
+
+<hr />
+	{% for song in album['songs'] %}
+		<label for="song_id"><b>{{song[0][0]}}&emsp;</b></label> 
+		<input name="song_{{song[0][0]}}" type="text" placeholder="{{song[0][1]}}" /> 
+		<input name="artists_{{song[0][0]}}" type="text" placeholder="{{song[1]}}" />  
+		<button name="dlt" value="{{song[0][0]}}" class="btn danger"> Delete </button>
+		<br>
+	{% endfor %}
+		<button name="submit_all" class="btn warning"> Update </button>
+
+</form>
+<hr />
+<form method="POST">
+	<p><b>Add songs here&emsp;</b><i>maximum: 10</i></p>
+	<small>if there already is a song with the same id, it is ignored</small><br><br>
+     <div id="dynamicInput">
+          Song 1<br>
+          <input type="number" placeholder="Song ID" name="songIDs[]" style="width: 65px" required="required">
+          <input type="text" placeholder="Song Title" name="titles[]" required="required">
+          <input name="artists[]" type="text" placeholder="Artists (use ', ' to seperate)" />
+     </div>
+     <input type="button" value="Add another song" onClick="addInput('dynamicInput');" class="btn info">
+     <input type="submit" name="submit_new" value="Insert songs"  class="btn success">
+</form>
+</center>
+
+<script type="text/javascript">
+var counter = 1;
+var limit = 10;
+function addInput(divName){
+     if (counter == limit)  {
+          alert("You have reached the limit of adding " + counter + " inputs");
+     }
+     else {
+          var newdiv = document.createElement('div');
+          newdiv.innerHTML = "Song " + (counter + 1) + '<br> <input type="number" placeholder="Song ID" name="songIDs[]" style="width: 65px" required="required"> <input type="text" placeholder="Song Title" name="titles[]" required="required"> <input name="artists[]" type="text" placeholder="Artists (use \', \' to seperate)" >';
+          document.getElementById(divName).appendChild(newdiv);
+          counter++;
+     }
+}
+
+</script>
+
+<section once="footers" class="cid-rYXPLzOsh3" id="footer7-d" style="position: relative; bottom: 0; width: 100%">
+
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            
+            <div class="row social-row">
+                <div class="social-list align-right pb-2">
+                    
+                    
+                    
+                    
+                    
+                    
+                <div class="soc-item">
+                        <a href="https://github.com/EnesToptas" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-github socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.linkedin.com/in/muhammed-enes-topta%C5%9F-39a9b1183/" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-linkedin socicon"></span>
+                        </a>
+                    </div></div>
+            </div>
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                    © Copyright 2020 DBtify - All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

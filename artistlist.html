@@ -1,0 +1,144 @@
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/bootstrap/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/bootstrap/css/bootstrap-grid.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/bootstrap/css/bootstrap-reboot.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/tether/tether.min.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/theme/css/style.css') }}">
+<link rel="stylesheet" href="../static/assets/socicon/css/styles.css">
+<link rel="preload" as="style" href="{{ url_for('static',filename='assets/mobirise/css/mbr-additional.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='assets/mobirise/css/mbr-additional.css') }}" type="text/css">
+
+
+<style type="text/css">
+	h2,h3 {
+		display: inline;
+	}
+
+.danger {
+  color: red;
+}
+
+.danger:hover {
+  background: #f44336;
+  color: white;
+}
+
+.btn {
+  border: none;
+  background-color: inherit;
+  padding: 0px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline;
+}
+
+.info {
+  color: dodgerblue;
+}
+
+.info:hover {
+  background: #2196F3;
+  color: white;
+}
+
+/* Orange */
+.warning {
+  color: orange;
+}
+
+.warning:hover {
+  background: #ff9800;
+  color: white;
+}
+
+.link:hover {
+    text-decoration: underline;
+    color: black;
+}
+.link{
+  color:black;
+ }
+
+</style>
+<body>
+	<a href="/listener/{{home}}"><img src="../static/home.png" width="60" height="60" style="position: fixed; z-index:1000; bottom: 20px; right: 30px"></a>
+	<form method="GET">
+		<center>
+		{% with messages = get_flashed_messages() %}
+		  {% if messages %}
+		    <ul class=flashes>
+		    {% for message in messages %}
+		      <li>{{ message }}</li>
+		    {% endfor %}
+		    </ul>
+		  {% endif %}
+		{% endwith %}
+
+		{% if issorted %}
+		<a href="/artist_list" class="btn warning"> 🔃 Sort </a>
+		{% else %}
+		<a href="/artist_list?sort=True" class="btn warning"> 🔃 Sort </a>
+		{% endif %}
+		<input type="text" name="Artist" size="20" placeholder="Artist Name">
+		<button class="btn danger" type="submit"> Filter by collaborators</button>
+		</center>
+	</form>
+	<b style="position: absolute;">id</b>
+	<b style="margin-left: 10%; position: absolute;;">Name Surname</b>
+	{% if feats %}
+	<b style="margin-left: 40%; position: absolute;;">Feats</b>
+	{% else %}
+	<b style="margin-left: 40%; position: absolute;;">Likes</b>
+	{% endif %}
+	<b style="margin-left: 70%; position: absolute;;">Picture</b>
+	<br>
+
+		{% for element in list %}
+			<br>
+			<div style="position: absolute;"> {{element[0]}} </div>
+			<h2 style="margin-left: 10%; position: absolute;;">{{element[1]}} {{element[2]}}</h2>
+			<h2 style="margin-left: 40%; position: absolute;;">{{element[3]}}</h2>
+			<img style="margin-left: 70%; margin-top: -20px; position: absolute;; display: inline-block;" src="{{element[4]}}" alt="Avatar" height="100" width="100">
+			<a href="/artist_profile/{{element[0]}}"><h3 style="margin-left: 90%; position: absolute;; padding: 4px" class="link">More</h3></a>
+			<br>
+			<p></p>
+			<br>
+			<hr>
+		{% endfor %}
+
+<br><br><br><br>
+
+<section once="footers" class="cid-rYXPLzOsh3" id="footer7-d" style="position: absolute; bottom: 0; width: 100%">
+
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            
+            <div class="row social-row">
+                <div class="social-list align-right pb-2">
+                    
+                    
+                    
+                    
+                    
+                    
+                <div class="soc-item">
+                        <a href="https://github.com/EnesToptas" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-github socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.linkedin.com/in/muhammed-enes-topta%C5%9F-39a9b1183/" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-linkedin socicon"></span>
+                        </a>
+                    </div></div>
+            </div>
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                    © Copyright 2020 DBtify - All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</body>
