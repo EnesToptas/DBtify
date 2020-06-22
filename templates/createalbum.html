@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Add Album</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='assets/view.css') }}" media="all">
+<script type="text/javascript" src="{{ url_for('static',filename='assets/view.js') }}"></script>
+</head>
+
+<style type="text/css">
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+body{
+	background-image: url('https://s3-eu-west-1.amazonaws.com/gr-cms/media/featured_images/none/436a79be-c3a0-47d3-b18f-1f9ca1c732e2/_02va_5184.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+</style>
+
+<body id="main_body" >
+<a href="/artist/{{home}}"><img src="{{ url_for('static',filename='home.png') }}" width="60" height="60" style="position: fixed; bottom: 20px; right: 30px"></a>
+	
+	
+	<img id="top" src="top.png" alt="">
+	<div id="form_container">
+	
+		<h1><a>Add album</a></h1>
+		<form id="form_114076" class="appnitro"  method="POST" action="">
+					<div class="form_description">
+			<h2>Add your album</h2>
+			<p>In this form you can add your album and songs of it to database.</p>
+		</div>
+
+		{% with messages = get_flashed_messages() %}
+		  {% if messages %}
+		    <ul class=flashes>
+		    {% for message in messages %}
+		      <li>{{ message }}</li>
+		    {% endfor %}
+		    </ul>
+		  {% endif %}
+		{% endwith %}	
+
+			<ul >
+		
+		<li id="li_1" >
+		<label class="description" for="element_1">Album ID</label>
+		<span>
+			<input name="album_id" type="number" maxlength="255" size="4" value="" required="required"/>
+			<label>id</label>
+		</span>
+		</li>
+
+		<li id="li_1" >
+		<label class="description" for="element_1">Name&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Genre</label>
+
+		<span>
+			<input name= "album_name" maxlength="255" size="16" placeholder="" required="required"/>
+		</span>
+
+		<span>
+			<input name= "album_genre" maxlength="255" size="8" placeholder="" required="required"/>
+		</span> 
+		</li> 
+		<li>
+		<div id="dynamicInput">
+
+          <b>Song 1</b><br>
+          <input type="number" placeholder="Song ID" name="songIDs[]" style="width: 65px" required="required">
+          <input type="text" placeholder="Song Title" name="titles[]" required="required">
+          <input name="artists[]" type="text" placeholder="Artists (use ', ' to seperate)" /><br>
+     	</div></li>
+			
+					<li class="buttons">
+			    <input type="hidden" name="form_id" value="114076" />
+			    <input type="button" value="Add another song" onClick="addInput('dynamicInput');" class="btn info">
+				<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+		</li>
+			</ul>
+		</form>	
+		
+	</div>
+	</body>
+
+	<script type="text/javascript">
+	var counter = 1;
+	var limit = 25;
+	function addInput(divName){
+	     if (counter == limit)  {
+	          alert("You have reached the limit of adding " + counter + " inputs");
+	     }
+	     else {
+	          var newdiv = document.createElement('div');
+	          newdiv.innerHTML = "<b>Song " + (counter + 1) + '</b><br> <input type="number" placeholder="Song ID" name="songIDs[]" style="width: 65px" required="required"> <input type="text" placeholder="Song Title" name="titles[]" required="required"> <input name="artists[]" type="text" placeholder="Artists (use \', \' to seperate)" >';
+	          document.getElementById(divName).appendChild(newdiv);
+	          counter++;
+	     }
+	}
+
+	</script>
+	
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html  >
+<style type="text/css">
+.link:hover {
+    text-decoration: underline;
+    color: black;
+}
+.link{
+  color:black;
+}
+</style>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="../static/assets/images/logo2.png" type="image/x-icon">
+  <meta name="description" content="Web Page Builder Description">
+  
+  
+  <title>Artist Profile</title>
+  <link rel="stylesheet" href="../static/assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="../static/assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="../static/assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="../static/assets/tether/tether.min.css">
+  <link rel="stylesheet" href="../static/assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="../static/assets/theme/css/style.css">
+  <link rel="preload" as="style" href="../static/assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="../static/assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
+</head>
+<body>
+<a href="/listener/{{home}}"><img src="../static/home.png" width="60" height="60" style="position: fixed; bottom: 20px; right: 30px"></a>
+
+<section class="engine"><a href="https://mobirise.info/f">simple site maker</a></section><section class="accordion2 cid-rZg2qpJTu6" id="accordion2-i">
+
+    
+    <div class="container">
+        <div class="media-container-row pt-5">
+            <div class="accordion-content">
+                <h2 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">
+                        {{element['name']}}</h2>
+                <h3 class="mbr-section-subtitle pt-2 align-center mbr-light mbr-fonts-style display-5">Total Likes:&nbsp;{{element['likes']}}</h3>
+                <div id="bootstrap-accordion_13" class="panel-group accordionStyles accordion pt-5 mt-3" role="tablist" aria-multiselectable="true">
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingOne">
+                                <a role="button" class="collapsed panel-title text-black" data-toggle="collapse" data-core="" href="#collapse1_13" aria-expanded="false" aria-controls="collapse1">
+                                    <h4 class="mbr-fonts-style display-5">
+                                        <span class="sign mbr-iconfont mbri-arrow-down inactive"></span>&nbsp;Albums</h4>
+                                </a>
+                            </div>
+                            <div id="collapse1_13" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#bootstrap-accordion_13">
+                                <div class="panel-body p-4">
+                                  <div style="float:left; width: 450px">
+                                        <div style="float:left; width: 50px">
+                                          <b>ID</b>
+                                        </div>
+                                        <div style="float:left; width: 200px">
+                                          <b>Title</b>
+                                        </div>
+                                        <div style="float:left; width: 200px">
+                                          <b>Genre</b>
+                                        </div>
+                                      </div>
+                                  {% for album in element['albums'] %}
+                                    
+                                      <div style="float:left; width: 450px">
+                                        <div style="float:left; width: 50px">
+                                          {{album[0]}}
+                                          <hr>
+                                        </div>
+                                        <div style="float:left; width: 200px">
+                                          <a href="/songs/album/{{album[0]}}" class="link">{{album[1]}}</a>
+                                        </div>
+                                        <div style="float:left; width: 200px">
+                                          {{album[2]}}
+                                        </div>
+                                      </div>
+                                       
+                                  {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+
+                
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingTwo">
+                                <a role="button" class="collapsed panel-title text-black" data-toggle="collapse" data-core="" href="#collapse2_13" aria-expanded="false" aria-controls="collapse2">
+                                    <h4 class="mbr-fonts-style mbr-fonts-style display-5">
+                                        <span class="sign mbr-iconfont mbri-arrow-down inactive"></span>&nbsp;Songs</h4>
+                                </a>
+                                
+                            </div>
+                            <div id="collapse2_13" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#bootstrap-accordion_13">
+                                <div class="panel-body p-4">
+                                  <div style="float:left; width: 590px">
+                                        <div style="float:left; width: 50px">
+                                          <b>ID</b>
+                                        </div>
+                                        <div style="float:left; width: 200px">
+                                          <b>Title</b>
+                                        </div>
+                                        <div style="float:left; width: 200px">
+                                          <b>Album</b>
+                                        </div>
+                                        <div style="float:left; width: 140px">
+                                          <b>Genre</b>
+                                        </div>
+                                  </div>
+                                  {% for song in element['songs'] %}
+                                      <div style="float:left; width: 590px">
+                                        <div style="float:left; width: 50px">
+                                          {{song[0]}}
+                                          <hr>
+                                        </div>
+                                        <div style="float:left; width: 200px">
+                                          {{song[1]}}
+                                        </div>
+                                        <div style="float:left; width: 200px">
+                                          <a href="/songs/album/{{song[4]}}" class="link">{{song[2]}}</a>
+                                        </div>
+                                        <div style="float:left; width: 140px">
+                                          {{song[3]}}
+                                        </div>
+                                      </div>
+                                  {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" role="tab" id="headingThree">
+                                <a role="button" class="collapsed panel-title text-black" data-toggle="collapse" data-core="" href="#collapse3_13" aria-expanded="false" aria-controls="collapse3">
+                                    <h4 class="mbr-fonts-style display-5">
+                                        <span class="sign mbr-iconfont mbri-arrow-down inactive"></span>&nbsp;Top 10</h4>
+                                </a>
+                            </div>
+                            <div id="collapse3_13" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#bootstrap-accordion_13">
+                                <div class="panel-body p-4">
+                                  <div style="float:left; width: 590px">
+                                        <div style="float:left; width: 50px">
+                                          <b>ID</b>
+                                        </div>
+                                        <div style="float:left; width: 200px">
+                                          <b>Title</b>
+                                        </div>
+                                        <div style="float:left; width: 200px">
+                                          <b>Album</b>
+                                        </div>
+                                        <div style="float:left; width: 140px">
+                                          <b>Likes</b>
+                                        </div>
+                                  </div>
+                                  {% for song in element['liked'] %}
+                                      <div style="float:left; width: 590px">
+                                        <div style="float:left; width: 50px">
+                                          {{song[0]}}
+                                          <hr>
+                                        </div>
+                                        <div style="float:left; width: 200px">
+                                          {{song[1]}}
+                                        </div>
+                                        <div style="float:left; width: 200px">
+                                          <a href="/songs/album/{{song[4]}}" class="link">{{song[2]}}</a>
+                                        </div>
+                                        <div style="float:left; width: 140px">
+                                          {{song[3]}}
+                                        </div>
+                                      </div>
+                                  {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                </div>
+            </div>
+            <div class="mbr-figure" style="width: 70%;">
+                    <img src="../static/{{element['picture']}}" alt="Mobirise">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section once="footers" class="cid-rYXPLzOsh3" id="footer7-d">
+
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            
+            <div class="row social-row">
+                <div class="social-list align-right pb-2">
+                    
+                    
+                    
+                    
+                    
+                    
+                <div class="soc-item">
+                        <a href="https://github.com/EnesToptas" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-github socicon"></span>
+                        </a>
+                    </div><div class="soc-item">
+                        <a href="https://www.linkedin.com/in/muhammed-enes-topta%C5%9F-39a9b1183/" target="_blank">
+                            <span class="mbr-iconfont mbr-iconfont-social socicon-linkedin socicon"></span>
+                        </a>
+                    </div></div>
+            </div>
+            <div class="row row-copirayt">
+                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                    © Copyright 2020 DBtify - All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="../static/assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="../static/assets/popper/popper.min.js"></script>
+  <script src="../static/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../static/assets/tether/tether.min.js"></script>
+  <script src="../static/assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="../static/assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="../static/assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="../static/assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>
+  <script src="../static/assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="../static/assets/theme/js/script.js"></script>
+  
+  
+</body>
+</html>
